@@ -1,6 +1,7 @@
 #include "correlator.cuh"
 #include <cassert>
 #include <cmath>
+#include <cstdint>
 
 #ifdef _DEBUG_BUILD
 #define CHECK(call)                                                                       \

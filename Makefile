@@ -1,6 +1,6 @@
-CXX=nvcc
+NVCC=nvcc
 
-ARCH=-arch compute_61 -code sm_61
+ARCH=-gencode=arch=compute_61,code=sm_61 -gencode=arch=compute_86,code=compute_86
 CUDAFLAGS=--ptxas-options=-v -m64 $(ARCH) -Xptxas -dlcm=ca -Xcompiler -D_FORCE_INLINES -lineinfo --expt-relaxed-constexpr
 
 BIN_FOLDER=bin
@@ -15,8 +15,8 @@ clean:
 
 release:
 	mkdir -p $(BIN_FOLDER)
-	$(CXX) $(FILES) $(CUDAFLAGS) -O3 -o $(BIN_FOLDER)/main
+	$(NVCC) $(FILES) $(CUDAFLAGS) -O3 -o $(BIN_FOLDER)/main
 
 debug:
 	mkdir -p $(BIN_FOLDER)
-	$(CXX) $(FILES) $(CUDAFLAGS) -D_DEBUG_BUILD -g -G -o $(BIN_FOLDER)/main 
+	$(NVCC) $(FILES) $(CUDAFLAGS) -D_DEBUG_BUILD -g -G -o $(BIN_FOLDER)/main 
