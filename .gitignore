@@ -6,3 +6,5 @@ main
 documentation/Doxygen/
 bin/
 .vscode/
+input/
+output/
